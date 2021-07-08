@@ -18,7 +18,6 @@ async [STAKE_COIN_OPERATION.ACTION.PREPARE_DELEGATION]({ state, getters, commit 
         }
         return false
       })
-      // when triggered from /send page (autostake)
       let autoDelegations = null
       if (opts && opts.autoStake) {
         autoDelegations = state.transactions
@@ -32,7 +31,7 @@ async [STAKE_COIN_OPERATION.ACTION.PREPARE_DELEGATION]({ state, getters, commit 
 
       if (!stakeNodes.length) {
         if (autoDelegations) {
-          // preview list on modal prepare
+         
           stakeNodes = autoDelegations.map(item => ({ name: item.address, amount: item.value }))
           stakeNodes.forEach(item => {
             commit(STAKE_COIN_OPERATION.MUTATION.ADD_STAKE, item)
@@ -47,7 +46,7 @@ async [STAKE_COIN_OPERATION.ACTION.PREPARE_DELEGATION]({ state, getters, commit 
         const nets = ['icon', 'iost', 'cosmos', 'secret', 'band', 'kava','polkadot']
         return nets.includes(net)
       }
-      // multi
+    
       if (isMultiDelegate()) {
         delegations = stakeNodes.map(item => ({ address: item.address, value:  BigNumber(parseFloat(item.amount)).toNumber() }))
       }
@@ -57,16 +56,7 @@ async [STAKE_COIN_OPERATION.ACTION.PREPARE_DELEGATION]({ state, getters, commit 
       }
       
 if (isMultiDelegate()) {
-        // const nets = ['iost', 'cosmos', 'secret', 'band', 'kava']
-        // if (nets.includes(net)) {
-        //   delegations.forEach(delegate => {
-        //     state.initialStakeList.forEach(initialDelegate => {
-        //       if (delegate.address === initialDelegate.current) {
-        //         delegate.value = BigNumber(parseFloat(delegate.value)).plus(BigNumber(parseFloat(initialDelegate.value))).toNumber()
-        //       }
-        //     })
-        //   })
-        // }
+
         if (net === 'icon') {
           if(state.initialStakeList.length>0){
           let value = 0
