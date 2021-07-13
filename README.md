@@ -1,5 +1,3 @@
-# citadelpolkadot
-polkadot
 **Citadel.one and Polkadot interactions:**
 1) Polkadot Address Generation
   The Polkadot address is generated using the Keyring class from the library "@polkadot/api"
