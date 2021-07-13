@@ -1,7 +1,7 @@
 const axios = require('axios');
 const config = require('../../config');
 const api_key = config['nomics.com'].key;
-const MarketCapObject = require('./');
+const MarketCapObject = require('./'); 
 
 module.exports = function (code) {
 	const instance = new MarketCapObject(code);
