@@ -40,4 +40,5 @@ module.exports = function (code) {
 		});
 	}).then(instance.triggerUpdate.bind(instance));
 	return instance;
+	
 };
